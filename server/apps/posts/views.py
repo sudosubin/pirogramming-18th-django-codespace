@@ -31,4 +31,7 @@ def posts_create(request, *args, **kwargs):
 
 
 def posts_delete(request, pk, *args, **kwargs):
+    if request.method == "POST":
+        post = Post.objects.get(id=pk)
+        post.delete()
     return redirect("/")
